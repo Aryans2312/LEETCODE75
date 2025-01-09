@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        if (nums.empty()) return 0; // Handle empty array case.
+
+        int maxSum = nums[0];
+        int currSum = nums[0];
+
+        for (int i = 1; i < nums.size(); i++) {
+            // Decide whether to include the current element in the existing subarray or start a new one.
+            currSum = max(nums[i], currSum + nums[i]);
+            maxSum = max(maxSum, currSum);
+        }
+
+        return maxSum;
+    }
+};
